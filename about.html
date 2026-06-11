@@ -776,37 +776,7 @@
       </div>
     </div>
   </footer>
-  <div id="exit-intent-banner" class="exit-popup hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title"
-    data-astro-cid-cwoha5ta="">
-    <div class="exit-popup-backdrop" data-astro-cid-cwoha5ta=""></div>
-    <div class="exit-popup-content" data-astro-cid-cwoha5ta=""> <button id="close-popup" class="close-button"
-        aria-label="Close modal" data-astro-cid-cwoha5ta=""> <svg xmlns="http://www.w3.org/2000/svg" width="24"
-          height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-          stroke-linejoin="round" data-astro-cid-cwoha5ta="">
-          <line x1="18" y1="6" x2="6" y2="18" data-astro-cid-cwoha5ta=""></line>
-          <line x1="6" y1="6" x2="18" y2="18" data-astro-cid-cwoha5ta=""></line>
-        </svg> </button>
-      <div class="popup-body" data-astro-cid-cwoha5ta="">
-        <h2 id="modal-title" data-astro-cid-cwoha5ta="">
-          Before You Go, See What’s Holding Your Growth Back
-        </h2>
-        <p data-astro-cid-cwoha5ta="">
-          Get a <strong data-astro-cid-cwoha5ta="">free marketing audit</strong> that pinpoints where you’re
-          losing leads, wasting budget, or missing opportunities.
-          <br data-astro-cid-cwoha5ta=""><br data-astro-cid-cwoha5ta="">
-          Clear insights. Actionable next steps. No obligation.
-        </p>
-        <div class="cta-container" data-astro-cid-cwoha5ta=""> <a href="contact.html" class="primary-button"
-            data-astro-cid-cwoha5ta="">
-            Get My Free Audit
-          </a> <button id="dismiss-popup" class="secondary-button" data-astro-cid-cwoha5ta="">
-            I’ll keep guessing
-          </button> </div>
-      </div>
-    </div>
-  </div>
-  <script
-    type="module">const c = "celestial_exit_intent_seen"; function m(e, i, o) { let n = ""; { const t = new Date; t.setTime(t.getTime() + o * 24 * 60 * 60 * 1e3), n = "; expires=" + t.toUTCString() } document.cookie = e + "=" + i + n + "; path=/" } function r(e) { const i = e + "=", o = document.cookie.split(";"); for (let n = 0; n < o.length; n++) { let t = o[n]; for (; t.charAt(0) == " ";)t = t.substring(1, t.length); if (t.indexOf(i) == 0) return t.substring(i.length, t.length) } return null } function u() { const e = document.getElementById("exit-intent-banner"); e && (e.classList.remove("hidden"), e.classList.add("visible")) } function d() { const e = document.getElementById("exit-intent-banner"); e && (e.classList.remove("visible"), e.classList.add("hidden")), m(c, "true", 7) } function p() { if (r(c)) return; document.addEventListener("mouseleave", s => { s.clientY <= 0 && (r(c) || u()) }); let e = window.scrollY, i = !1; const o = () => { i || (window.requestAnimationFrame(() => { const s = window.scrollY, f = e - s; s > 400 && f > 10 && !r(c) && (u(), window.removeEventListener("scroll", o)), e = s, i = !1 }), i = !0) }; (window.matchMedia("(max-width: 768px)").matches || "ontouchstart" in window) && window.addEventListener("scroll", o, { passive: !0 }); const n = document.getElementById("close-popup"), t = document.getElementById("dismiss-popup"), l = document.querySelector(".exit-popup-backdrop"), a = document.querySelector(".primary-button"); a && a.addEventListener("click", () => { m(c, "true", 7) }), n && n.addEventListener("click", d), t && t.addEventListener("click", d), l && l.addEventListener("click", d) } document.addEventListener("DOMContentLoaded", p);</script>
+
   <style>
     astro-island,
     astro-slot,
