@@ -10,11 +10,29 @@
   object-position: center top;
   display: block;
   border-radius: 0.75rem;
-  transition: transform 0.4s ease;
+  filter: grayscale(100%) brightness(0.88);
+  transition: transform 0.6s ease-out, filter 0.6s ease-out;
+}
+
+.founder-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: 0.75rem;
+  background-color: #2563eb;
+  opacity: 0.22;
+  pointer-events: none;
+  transition: opacity 0.6s ease-out;
 }
 
 .founder-card:hover .founder-card__image {
-  transform: scale(1.03);
+  transform: scale(1.04);
+  filter: grayscale(0%) brightness(1);
+}
+
+.founder-card:hover::before {
+  opacity: 0;
 }
 
 @media (max-width: 1024px) {
