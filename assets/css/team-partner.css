@@ -83,6 +83,21 @@
   z-index: 1;
 }
 
+.team-partner-grid {
+  align-items: start;
+}
+
+.team-partner-profile {
+  align-self: start;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+}
+
+.team-partner-profile__cta {
+  margin-top: 2rem;
+}
+
 .team-partner-glass-card {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(96, 165, 250, 0.15);
