@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-label="Aryan Raman Asthana">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f2744"/>
+      <stop offset="50%" stop-color="#1e3a5f"/>
+      <stop offset="100%" stop-color="#071226"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#bg)"/>
+  <ellipse cx="400" cy="280" rx="220" ry="240" fill="url(#glow)"/>
+  <ellipse cx="400" cy="320" rx="130" ry="145" fill="#1e4976"/>
+  <path d="M220 920 Q400 720 580 920 L580 1000 L220 1000 Z" fill="#1e4976"/>
+  <text x="400" y="540" text-anchor="middle" fill="#60a5fa" font-family="system-ui, sans-serif" font-size="28" font-weight="600" opacity="0.6">Profile Photo</text>
+</svg>
