@@ -482,14 +482,33 @@ function buildBlogListing() {
   ${navbar}
   <script type="module">document.addEventListener("scroll", () => { const e = document.getElementById("main-header"); window.scrollY > 0 ? e?.classList.add("shadow-header") : e?.classList.remove("shadow-header"); });</script>
 
-  <section class="blog-hero text-white pt-28 pb-20 px-4 sm:px-6 lg:px-8">
-    <div class="blog-hero__inner max-w-7xl mx-auto">
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-        Insights for <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Digital Growth</span>
+  <section class="blog-hero text-white pt-32 lg:pt-40 pb-20 lg:pb-28 overflow-hidden">
+    <div class="blog-hero__grid" aria-hidden="true"></div>
+    <div class="blog-hero__glow blog-hero__glow--blue" aria-hidden="true"></div>
+    <div class="blog-hero__glow blog-hero__glow--indigo" aria-hidden="true"></div>
+    <div class="blog-hero__glow blog-hero__glow--violet" aria-hidden="true"></div>
+    <div class="blog-hero__inner mx-auto max-w-[1400px] px-6 lg:px-12 text-center">
+      <div class="blog-hero__badge eyebrow eyebrow-dark mb-6 blog-hero__fade blog-hero__fade--1">
+        <span class="blog-hero__badge-dot" aria-hidden="true">●</span>
+        <span>Celestial Studios Journal</span>
+      </div>
+      <h1 class="heading-1 !text-white blog-hero__fade blog-hero__fade--2">
+        The Celestial Studios <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Blog</span>
       </h1>
-      <p class="text-xl text-white/80 max-w-2xl leading-relaxed">
-        Practical strategies on websites, branding, SEO, and marketing from the Celestial Studios team. <em>Click. Connect. Grow.</em>
+      <p class="blog-hero__subtitle blog-hero__fade blog-hero__fade--3">
+        Explore expert insights on website development, branding, SEO, digital marketing, user experience, and business growth.
       </p>
+      <p class="blog-hero__subtitle blog-hero__fade blog-hero__fade--4">
+        Discover practical strategies, industry trends, and actionable ideas to help your business build a stronger online presence.
+      </p>
+      <div class="blog-hero__topics blog-hero__fade blog-hero__fade--5" aria-label="Topics covered">
+        <span class="blog-hero__topic">Website Development</span>
+        <span class="blog-hero__topic">Branding</span>
+        <span class="blog-hero__topic">SEO</span>
+        <span class="blog-hero__topic">Digital Marketing</span>
+        <span class="blog-hero__topic">User Experience</span>
+        <span class="blog-hero__topic">Business Growth</span>
+      </div>
     </div>
   </section>
 
