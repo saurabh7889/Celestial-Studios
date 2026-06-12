@@ -83,18 +83,19 @@
   z-index: 1;
 }
 
-.team-partner-grid {
+/* Shared profile layout — Founder + Partner sections */
+.profile-section-grid {
   align-items: start;
 }
 
-.team-partner-profile {
+.profile-block {
   align-self: start;
   width: 100%;
   height: auto;
   min-height: 0;
 }
 
-.team-partner-profile__cta {
+.profile-block__cta {
   margin-top: 2rem;
 }
 
