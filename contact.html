@@ -41,20 +41,38 @@
     <link rel="stylesheet" href="assets/css/contact.css">
     <link rel="stylesheet" href="assets/css/brand-images.css">
     <style>
-        .success-message[data-astro-cid-svshx33u] {
-            color: green;
-            font-size: 1rem;
-            margin-top: 1rem
+        .form-feedback[hidden] {
+            display: none
         }
 
-        .error-message[data-astro-cid-svshx33u] {
+        .success-message {
+            background-color: #dcfce7;
+            color: #166534;
+            padding: 1rem 1.25rem;
+            border-radius: .75rem;
+            margin-top: 1rem;
+            font-size: 1rem;
+            border: 1px solid #86efac
+        }
+
+        .error-message {
             background-color: #ff7575b4;
             color: #fff;
-            padding: 1rem;
-            border-radius: .5rem;
+            padding: 1rem 1.25rem;
+            border-radius: .75rem;
             margin-top: 1rem;
             font-size: 1rem;
             text-align: center
+        }
+
+        .honeypot-field {
+            position: absolute;
+            left: -9999px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            opacity: 0;
+            pointer-events: none
         }
     </style>
 </head>
@@ -375,18 +393,17 @@
         <div class="py-24">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
-                    <script src="assets/js/api.js" async="" defer=""></script>
                     <div data-astro-cid-svshx33u="">
                         <div class="text-2xl md:text-3xl font-bold text-slate-900 mb-6" data-astro-cid-svshx33u="">Tell Us About Your Project</div>
-                        <div></div>
-                        <form id="contact-form" class="space-y-6" data-astro-cid-svshx33u=""> <input type="hidden"
-                                name="honeypot" style="display:none;" data-astro-cid-svshx33u=""> <input type="hidden"
-                                name="entry_page" id="entry_page" data-astro-cid-svshx33u=""
-                                value="https://celestialstudios.in/contact/"> <input type="hidden" name="referral_source"
-                                id="referral_source" data-astro-cid-svshx33u="" value=""> <input type="hidden"
-                                name="landing_page" id="landing_page" data-astro-cid-svshx33u=""
-                                value="https://celestialstudios.in/contact/"> <input type="hidden"
-                                name="g-recaptcha-response" id="g-recaptcha-response" data-astro-cid-svshx33u="">
+                        <div id="form-feedback" class="form-feedback" hidden="" aria-live="polite"></div>
+                        <form id="contact-form" class="space-y-6" novalidate="" data-astro-cid-svshx33u="">
+                            <div class="honeypot-field" aria-hidden="true">
+                                <label for="_honey">Leave this field empty</label>
+                                <input type="text" name="_honey" id="_honey" tabindex="-1" autocomplete="off" data-astro-cid-svshx33u="">
+                            </div>
+                            <input type="hidden" name="entry_page" id="entry_page" data-astro-cid-svshx33u="" value="">
+                            <input type="hidden" name="referral_source" id="referral_source" data-astro-cid-svshx33u="" value="">
+                            <input type="hidden" name="landing_page" id="landing_page" data-astro-cid-svshx33u="" value="">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6" data-astro-cid-svshx33u="">
                                 <div data-astro-cid-svshx33u=""> <label for="name"
                                         class="block text-xs uppercase tracking-wider font-extrabold text-slate-500 mb-2"
@@ -444,8 +461,8 @@
                                 </button> </div>
                         </form>
                     </div>
-                    <script
-                        type="module">document.addEventListener("DOMContentLoaded", () => { const e = document.getElementById("contact-form"); if (!e || !e.parentNode) return; const t = document.createElement("div"); e.parentNode.insertBefore(t, e); const a = document.getElementById("entry_page"), c = document.getElementById("referral_source"), s = document.getElementById("landing_page"); a && (a.value = sessionStorage.getItem("entry_page") || ""), c && (c.value = sessionStorage.getItem("referral_source") || ""), s && (s.value = window.location.href), e.addEventListener("submit", async l => { l.preventDefault(); const d = document.getElementById("g-recaptcha-response"); try { window.grecaptcha.ready(async () => { const n = await window.grecaptcha.execute("6LdMboQqAAAAAHtiFdGAlPsOZjh2gq3RScjfd2kG", { action: "submit" }); d && (d.value = n); const u = new FormData(e), o = await fetch("/api/create-brevo-contact/", { method: "POST", body: u }); if (o.ok) { window.location.href = "/thank-you/"; return } let r = "Failed to send the message."; try { r = (await o.json()).message || r } catch (i) { console.error("Non-JSON error response from contact API", i); const m = await o.text(); m && (r = `${r} (${m})`) } t.textContent = r, t.className = "error-message" }) } catch (n) { console.error("Unexpected error during form submission:", n), t.textContent = "An unexpected error occurred.", t.className = "error-message" } }) });</script>
+                    <script src="assets/js/contact-config.js" defer=""></script>
+                    <script src="assets/js/contact-form.js" defer=""></script>
                     <div>
                         <h2 class="heading-2">Why Contact Celestial Studios?</h2>
                         <div class="space-y-6 mb-12">
