@@ -323,34 +323,41 @@
 
   <script type="module">document.addEventListener("scroll", () => { const e = document.getElementById("main-header"); window.scrollY > 0 ? e?.classList.add("shadow-header") : e?.classList.remove("shadow-header"); });</script>
 
-  <section class="article-hero text-white pt-28 pb-16 px-4 sm:px-6 lg:px-8">
-    <div class="article-hero__orb" aria-hidden="true"></div>
-    <div class="max-w-4xl mx-auto relative z-10">
-      <p class="article-breadcrumb"><a href="../index.html">Home</a> / <a href="../blog.html">Blog</a> / <span>Website Development</span></p>
-      <span class="blog-card__category" style="color:#60a5fa;background:rgba(59,130,246,0.15);border-color:rgba(96,165,250,0.3);">Website Development</span>
-      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mt-4 mb-6">Website Speed Optimization and Why It Matters</h1>
-      <div class="flex flex-wrap items-center gap-4 text-sm text-white/70">
-        <span>Saurabh Kumar</span>
-        <span>·</span>
-        <time datetime="2026-03-10">March 10, 2026</time>
-        <span>·</span>
-        <span>9 min read</span>
-      </div>
-    </div>
-  </section>
+  <div class="article-page">
+    <div class="article-layout">
+      <aside class="article-toc" aria-label="Article navigation">
+        <button type="button" class="article-toc__toggle" aria-expanded="false" aria-controls="article-toc-panel">
+          <span class="article-toc__toggle-label">Table of Contents</span>
+          <svg class="article-toc__toggle-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div id="article-toc-panel" class="article-toc__panel"><nav class="article-toc__inner" aria-label="Table of contents"><p class="article-toc__title">Table of Contents</p><ul class="article-toc__list"><li class="article-toc__item"><a href="#why-speed-matters" class="article-toc__link" data-toc-link><span class="article-toc__num" aria-hidden="true">01</span><span class="article-toc__text">Why Website Speed Matters</span></a><ul class="article-toc__sublist"><li class="article-toc__subitem"><a href="#google-core-vitals" class="article-toc__link article-toc__link--sub" data-toc-link><span class="article-toc__text">Google Core Web Vitals</span></a></li></ul></li><li class="article-toc__item"><a href="#image-optimization" class="article-toc__link" data-toc-link><span class="article-toc__num" aria-hidden="true">02</span><span class="article-toc__text">Image Optimization</span></a></li><li class="article-toc__item"><a href="#code-optimization" class="article-toc__link" data-toc-link><span class="article-toc__num" aria-hidden="true">03</span><span class="article-toc__text">Code and Script Optimization</span></a></li><li class="article-toc__item"><a href="#hosting-cdn" class="article-toc__link" data-toc-link><span class="article-toc__num" aria-hidden="true">04</span><span class="article-toc__text">Hosting and CDN Strategy</span></a></li><li class="article-toc__item"><a href="#caching" class="article-toc__link" data-toc-link><span class="article-toc__num" aria-hidden="true">05</span><span class="article-toc__text">Browser and Server Caching</span></a></li><li class="article-toc__item"><a href="#mobile-speed" class="article-toc__link" data-toc-link><span class="article-toc__num" aria-hidden="true">06</span><span class="article-toc__text">Mobile Speed Priority</span></a></li><li class="article-toc__item"><a href="#measuring-speed" class="article-toc__link" data-toc-link><span class="article-toc__num" aria-hidden="true">07</span><span class="article-toc__text">How to Measure Performance</span></a></li><li class="article-toc__item"><a href="#conclusion" class="article-toc__link" data-toc-link><span class="article-toc__num" aria-hidden="true">08</span><span class="article-toc__text">Speed Is a Competitive Advantage</span></a></li><li class="article-toc__item"><a href="#database-optimization" class="article-toc__link" data-toc-link><span class="article-toc__num" aria-hidden="true">09</span><span class="article-toc__text">Database and Backend Performance</span></a></li><li class="article-toc__item"><a href="#third-party-audit" class="article-toc__link" data-toc-link><span class="article-toc__num" aria-hidden="true">10</span><span class="article-toc__text">Third-Party Script Audit</span></a></li><li class="article-toc__item"><a href="#speed-monitoring" class="article-toc__link" data-toc-link><span class="article-toc__num" aria-hidden="true">11</span><span class="article-toc__text">Ongoing Speed Monitoring</span></a></li></ul></nav></div>
+      </aside>
 
-  <div class="article-layout">
-    <aside class="article-toc lg:block"><nav class="article-toc__inner" aria-label="Table of contents"><p class="article-toc__title">On this page</p><ul class="article-toc__list"><li><a href="#why-speed-matters">Why Website Speed Matters</a></li><li><a href="#image-optimization">Image Optimization</a></li><li><a href="#code-optimization">Code and Script Optimization</a></li><li><a href="#hosting-cdn">Hosting and CDN Strategy</a></li><li><a href="#caching">Browser and Server Caching</a></li><li><a href="#mobile-speed">Mobile Speed Priority</a></li><li><a href="#measuring-speed">How to Measure Performance</a></li><li><a href="#conclusion">Speed Is a Competitive Advantage</a></li><li><a href="#database-optimization">Database and Backend Performance</a></li><li><a href="#third-party-audit">Third-Party Script Audit</a></li><li><a href="#speed-monitoring">Ongoing Speed Monitoring</a><ul class="article-toc__list"><li class="toc-h3"><a href="#google-core-vitals">Google Core Web Vitals</a></li></ul></li></ul></nav></aside>
-    <article class="article-content">
-      <div class="article-featured-image celestial-image-wrap">
-        <img src="../assets/images/web-deve.png" alt="Website performance and speed optimization metrics" class="celestial-brand-img w-full h-auto object-cover" width="1200" height="630" loading="eager">
-      </div>
-      <div class="article-meta-bar">
-        <span><strong>Saurabh Kumar</strong> · Founder, Celestial Studios</span>
-        <span>March 10, 2026</span>
-        <span>9 min read</span>
-      </div>
-      <div class="article-body"><p>Page speed is invisible until it isn't. Visitors don't consciously think "this site is slow"—they simply leave. Google doesn't announce that slow pages rank lower—they just stop sending traffic. Speed optimization is one of the highest-impact improvements any business website can make, yet it remains overlooked by teams focused on aesthetics over performance.</p>
+      <article class="article-content">
+        <header class="article-header">
+          <nav class="article-breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a>
+            <span class="article-breadcrumb__sep" aria-hidden="true">/</span>
+            <a href="../blog.html">Blog</a>
+            <span class="article-breadcrumb__sep" aria-hidden="true">/</span>
+            <span class="article-breadcrumb__current">Website Speed Optimization and Why It Matters</span>
+          </nav>
+          <span class="article-category">Website Development</span>
+          <h1 class="article-title">Website Speed Optimization and Why It Matters</h1>
+          <p class="article-meta">
+            By <span class="article-meta__author">Saurabh Kumar</span>
+            <span class="article-meta__sep" aria-hidden="true">·</span>
+            <time datetime="2026-03-10">March 10, 2026</time>
+            <span class="article-meta__sep" aria-hidden="true">·</span>
+            <span>9 min read</span>
+          </p>
+        </header>
+
+        <div class="article-featured-image celestial-image-wrap">
+          <img src="../assets/images/web-deve.png" alt="Website performance and speed optimization metrics" class="celestial-brand-img w-full h-auto object-cover" width="1200" height="630" loading="eager">
+        </div>
+
+        <div class="article-body"><p>Page speed is invisible until it isn't. Visitors don't consciously think "this site is slow"—they simply leave. Google doesn't announce that slow pages rank lower—they just stop sending traffic. Speed optimization is one of the highest-impact improvements any business website can make, yet it remains overlooked by teams focused on aesthetics over performance.</p>
 
 <h2 id="why-speed-matters">Why Website Speed Matters</h2>
 
@@ -424,29 +431,34 @@
 <p>Celestial Studios builds <a href="../services.html#website-development">performance-optimized websites</a> from the ground up and offers <a href="../services.html#website-support">ongoing maintenance</a> to keep sites fast. <a href="../contact.html">Get a speed audit</a> and discover what's slowing your site down.</p>
 </div>
 
-      <div class="article-author-card">
-        <img src="../assets/images/saurabh-profile.png" alt="Saurabh Kumar" width="56" height="56" loading="lazy">
-        <div>
-          <strong class="text-slate-900">Saurabh Kumar</strong>
-          <p class="text-sm text-slate-500 m-0">Founder, Celestial Studios</p>
-          <p class="text-sm text-slate-600 mt-2 mb-0">Celestial Studios helps businesses grow through websites, branding, digital marketing, and AI-powered solutions. <em>Click. Connect. Grow.</em></p>
+        <section class="article-author" aria-label="About the author">
+          <div class="article-author-card">
+            <img src="../assets/images/saurabh-profile.png" alt="Saurabh Kumar" width="64" height="64" loading="lazy">
+            <div class="article-author-card__content">
+              <p class="article-author-card__label">Written by</p>
+              <h3 class="article-author-card__name">Saurabh Kumar</h3>
+              <p class="article-author-card__role">Founder, Celestial Studios</p>
+              <p class="article-author-card__bio">Celestial Studios helps businesses grow through websites, branding, digital marketing, and AI-powered solutions. <em>Click. Connect. Grow.</em></p>
+            </div>
+          </div>
+        </section>
+
+        <div class="article-share" aria-label="Share this article">
+          <span class="article-share__label">Share this article</span>
+          <div class="article-share__buttons">
+            <a class="article-share__btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fcelestialstudios.in%2Fblog%2Fwebsite-speed-optimization%2F" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+            <a class="article-share__btn" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fcelestialstudios.in%2Fblog%2Fwebsite-speed-optimization%2F&text=Website%20Speed%20Optimization%20and%20Why%20It%20Matters" target="_blank" rel="noopener noreferrer" aria-label="Share on X">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a class="article-share__btn" href="mailto:?subject=Website%20Speed%20Optimization%20and%20Why%20It%20Matters&body=https%3A%2F%2Fcelestialstudios.in%2Fblog%2Fwebsite-speed-optimization%2F" aria-label="Share via email">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </a>
+          </div>
         </div>
-      </div>
 
-      <div class="article-share">
-        <span class="text-sm text-slate-500 font-medium">Share:</span>
-        <a class="article-share__btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fcelestialstudios.in%2Fblog%2Fwebsite-speed-optimization%2F" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">
-          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-        </a>
-        <a class="article-share__btn" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fcelestialstudios.in%2Fblog%2Fwebsite-speed-optimization%2F&text=Website%20Speed%20Optimization%20and%20Why%20It%20Matters" target="_blank" rel="noopener noreferrer" aria-label="Share on Twitter">
-          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-        </a>
-        <a class="article-share__btn" href="mailto:?subject=Website%20Speed%20Optimization%20and%20Why%20It%20Matters&body=https%3A%2F%2Fcelestialstudios.in%2Fblog%2Fwebsite-speed-optimization%2F" aria-label="Share via email">
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-        </a>
-      </div>
-
-      <section class="article-related"><h2>Related Articles</h2><div class="article-related-grid"><a href="../blog/website-mistakes-costing-customers.html" class="article-related-card">
+        <section class="article-related"><h2>Related Articles</h2><div class="article-related-grid"><a href="../blog/website-mistakes-costing-customers.html" class="article-related-card">
       <img src="../assets/images/website-support.jpg" alt="Website audit and performance review on laptop" loading="lazy" width="400" height="200">
       <div class="article-related-card__body"><h3>10 Website Mistakes That Are Costing You Customers</h3></div>
     </a><a href="../blog/user-experience-matters.html" class="article-related-card">
@@ -457,15 +469,41 @@
       <div class="article-related-card__body"><h3>SEO for Small Businesses: A Complete Beginner's Guide</h3></div>
     </a></div></section>
 
-      <section class="article-cta">
-        <h2>Ready to Grow Your Brand?</h2>
-        <p>Partner with Celestial Studios to build a stronger online presence and accelerate your business growth.</p>
-        <div class="article-cta__buttons">
-          <a href="../contact.html" class="article-cta__btn-primary">Book a Free Consultation</a>
-          <a href="../services.html" class="article-cta__btn-secondary">Explore Our Services</a>
+        <section class="article-cta">
+          <div class="article-cta__glow" aria-hidden="true"></div>
+          <h2>Ready to Grow Your Business?</h2>
+          <p>Partner with Celestial Studios to build a stronger online presence through web development, branding, SEO, and digital growth strategies.</p>
+          <div class="article-cta__buttons">
+            <a href="../contact.html" class="article-cta__btn-primary">Book a Free Consultation</a>
+            <a href="../services.html" class="article-cta__btn-secondary">Explore Services</a>
+          </div>
+        </section>
+
+        <div class="article-sidebar-mobile">
+          <aside class="article-sidebar article-sidebar--inline" aria-label="Consultation call to action">
+    <div class="article-sidebar__cta">
+      <h3 class="article-sidebar__title">Ready to Grow Your Business?</h3>
+      <p class="article-sidebar__text">Partner with Celestial Studios to build a stronger online presence through web development, branding, SEO, and digital growth strategies.</p>
+      <div class="article-sidebar__buttons">
+        <a href="../contact.html" class="article-sidebar__btn-primary">Book a Free Consultation</a>
+        <a href="../services.html" class="article-sidebar__btn-secondary">Explore Services</a>
+      </div>
+    </div>
+  </aside>
         </div>
-      </section>
-    </article>
+      </article>
+
+      <aside class="article-sidebar" aria-label="Consultation call to action">
+    <div class="article-sidebar__cta">
+      <h3 class="article-sidebar__title">Ready to Grow Your Business?</h3>
+      <p class="article-sidebar__text">Partner with Celestial Studios to build a stronger online presence through web development, branding, SEO, and digital growth strategies.</p>
+      <div class="article-sidebar__buttons">
+        <a href="../contact.html" class="article-sidebar__btn-primary">Book a Free Consultation</a>
+        <a href="../services.html" class="article-sidebar__btn-secondary">Explore Services</a>
+      </div>
+    </div>
+  </aside>
+    </div>
   </div>
 
   <footer class="bg-black text-white">

@@ -323,34 +323,41 @@
 
   <script type="module">document.addEventListener("scroll", () => { const e = document.getElementById("main-header"); window.scrollY > 0 ? e?.classList.add("shadow-header") : e?.classList.remove("shadow-header"); });</script>
 
-  <section class="article-hero text-white pt-28 pb-16 px-4 sm:px-6 lg:px-8">
-    <div class="article-hero__orb" aria-hidden="true"></div>
-    <div class="max-w-4xl mx-auto relative z-10">
-      <p class="article-breadcrumb"><a href="../index.html">Home</a> / <a href="../blog.html">Blog</a> / <span>Digital Marketing</span></p>
-      <span class="blog-card__category" style="color:#60a5fa;background:rgba(59,130,246,0.15);border-color:rgba(96,165,250,0.3);">Digital Marketing</span>
-      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mt-4 mb-6">Digital Marketing Strategies That Actually Work</h1>
-      <div class="flex flex-wrap items-center gap-4 text-sm text-white/70">
-        <span>Saurabh Kumar</span>
-        <span>·</span>
-        <time datetime="2026-04-15">April 15, 2026</time>
-        <span>·</span>
-        <span>11 min read</span>
-      </div>
-    </div>
-  </section>
+  <div class="article-page">
+    <div class="article-layout">
+      <aside class="article-toc" aria-label="Article navigation">
+        <button type="button" class="article-toc__toggle" aria-expanded="false" aria-controls="article-toc-panel">
+          <span class="article-toc__toggle-label">Table of Contents</span>
+          <svg class="article-toc__toggle-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div id="article-toc-panel" class="article-toc__panel"><nav class="article-toc__inner" aria-label="Table of contents"><p class="article-toc__title">Table of Contents</p><ul class="article-toc__list"><li class="article-toc__item"><a href="#strategy-before-tactics" class="article-toc__link" data-toc-link><span class="article-toc__num" aria-hidden="true">01</span><span class="article-toc__text">Strategy Before Tactics</span></a><ul class="article-toc__sublist"><li class="article-toc__subitem"><a href="#marketing-funnel" class="article-toc__link article-toc__link--sub" data-toc-link><span class="article-toc__text">Map Your Marketing Funnel</span></a></li></ul></li><li class="article-toc__item"><a href="#seo-content-marketing" class="article-toc__link" data-toc-link><span class="article-toc__num" aria-hidden="true">02</span><span class="article-toc__text">SEO and Content Marketing</span></a></li><li class="article-toc__item"><a href="#paid-advertising" class="article-toc__link" data-toc-link><span class="article-toc__num" aria-hidden="true">03</span><span class="article-toc__text">Paid Advertising With Precision</span></a><ul class="article-toc__sublist"><li class="article-toc__subitem"><a href="#landing-page-alignment" class="article-toc__link article-toc__link--sub" data-toc-link><span class="article-toc__text">Landing Page Alignment</span></a></li></ul></li><li class="article-toc__item"><a href="#email-marketing" class="article-toc__link" data-toc-link><span class="article-toc__num" aria-hidden="true">04</span><span class="article-toc__text">Email Marketing Returns</span></a></li><li class="article-toc__item"><a href="#social-media-integration" class="article-toc__link" data-toc-link><span class="article-toc__num" aria-hidden="true">05</span><span class="article-toc__text">Social Media as Amplifier</span></a></li><li class="article-toc__item"><a href="#analytics-optimization" class="article-toc__link" data-toc-link><span class="article-toc__num" aria-hidden="true">06</span><span class="article-toc__text">Analytics and Continuous Optimization</span></a></li><li class="article-toc__item"><a href="#ai-automation" class="article-toc__link" data-toc-link><span class="article-toc__num" aria-hidden="true">07</span><span class="article-toc__text">AI and Marketing Automation</span></a></li><li class="article-toc__item"><a href="#integrated-approach" class="article-toc__link" data-toc-link><span class="article-toc__num" aria-hidden="true">08</span><span class="article-toc__text">The Integrated Approach Wins</span></a></li><li class="article-toc__item"><a href="#budget-allocation" class="article-toc__link" data-toc-link><span class="article-toc__num" aria-hidden="true">09</span><span class="article-toc__text">Budget Allocation Framework</span></a></li><li class="article-toc__item"><a href="#competitive-analysis" class="article-toc__link" data-toc-link><span class="article-toc__num" aria-hidden="true">10</span><span class="article-toc__text">Competitive Marketing Analysis</span></a></li><li class="article-toc__item"><a href="#marketing-90-day-plan" class="article-toc__link" data-toc-link><span class="article-toc__num" aria-hidden="true">11</span><span class="article-toc__text">Build a 90-Day Marketing Sprint</span></a></li></ul></nav></div>
+      </aside>
 
-  <div class="article-layout">
-    <aside class="article-toc lg:block"><nav class="article-toc__inner" aria-label="Table of contents"><p class="article-toc__title">On this page</p><ul class="article-toc__list"><li><a href="#strategy-before-tactics">Strategy Before Tactics</a></li><li><a href="#seo-content-marketing">SEO and Content Marketing</a></li><li><a href="#paid-advertising">Paid Advertising With Precision</a></li><li><a href="#email-marketing">Email Marketing Returns</a></li><li><a href="#social-media-integration">Social Media as Amplifier</a></li><li><a href="#analytics-optimization">Analytics and Continuous Optimization</a></li><li><a href="#ai-automation">AI and Marketing Automation</a></li><li><a href="#integrated-approach">The Integrated Approach Wins</a></li><li><a href="#budget-allocation">Budget Allocation Framework</a></li><li><a href="#competitive-analysis">Competitive Marketing Analysis</a></li><li><a href="#marketing-90-day-plan">Build a 90-Day Marketing Sprint</a><ul class="article-toc__list"><li class="toc-h3"><a href="#marketing-funnel">Map Your Marketing Funnel</a></li><li class="toc-h3"><a href="#landing-page-alignment">Landing Page Alignment</a></li></ul></li></ul></nav></aside>
-    <article class="article-content">
-      <div class="article-featured-image celestial-image-wrap">
-        <img src="../assets/images/blog-digital-strategy.jpg" alt="Digital marketing strategy planning session" class="celestial-brand-img w-full h-auto object-cover" width="1200" height="630" loading="eager">
-      </div>
-      <div class="article-meta-bar">
-        <span><strong>Saurabh Kumar</strong> · Founder, Celestial Studios</span>
-        <span>April 15, 2026</span>
-        <span>11 min read</span>
-      </div>
-      <div class="article-body"><p>Digital marketing advice is everywhere—conflicting tips, outdated tactics, and hype-driven recommendations that waste budgets without delivering results. The strategies that actually work in 2026 share common traits: they're data-informed, customer-centric, integrated across channels, and designed for sustainable growth rather than short-term spikes.</p>
+      <article class="article-content">
+        <header class="article-header">
+          <nav class="article-breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a>
+            <span class="article-breadcrumb__sep" aria-hidden="true">/</span>
+            <a href="../blog.html">Blog</a>
+            <span class="article-breadcrumb__sep" aria-hidden="true">/</span>
+            <span class="article-breadcrumb__current">Digital Marketing Strategies That Actually Work</span>
+          </nav>
+          <span class="article-category">Digital Marketing</span>
+          <h1 class="article-title">Digital Marketing Strategies That Actually Work</h1>
+          <p class="article-meta">
+            By <span class="article-meta__author">Saurabh Kumar</span>
+            <span class="article-meta__sep" aria-hidden="true">·</span>
+            <time datetime="2026-04-15">April 15, 2026</time>
+            <span class="article-meta__sep" aria-hidden="true">·</span>
+            <span>11 min read</span>
+          </p>
+        </header>
+
+        <div class="article-featured-image celestial-image-wrap">
+          <img src="../assets/images/blog-digital-strategy.jpg" alt="Digital marketing strategy planning session" class="celestial-brand-img w-full h-auto object-cover" width="1200" height="630" loading="eager">
+        </div>
+
+        <div class="article-body"><p>Digital marketing advice is everywhere—conflicting tips, outdated tactics, and hype-driven recommendations that waste budgets without delivering results. The strategies that actually work in 2026 share common traits: they're data-informed, customer-centric, integrated across channels, and designed for sustainable growth rather than short-term spikes.</p>
 
 <p>Here's a practical framework for digital marketing that generates real business outcomes.</p>
 
@@ -417,29 +424,34 @@
 <p>Celestial Studios designs <a href="../services.html#digital-marketing">digital marketing strategies</a> that connect every channel to business growth. <a href="../contact.html">Book a strategy session</a> and build a marketing plan that actually works.</p>
 </div>
 
-      <div class="article-author-card">
-        <img src="../assets/images/saurabh-profile.png" alt="Saurabh Kumar" width="56" height="56" loading="lazy">
-        <div>
-          <strong class="text-slate-900">Saurabh Kumar</strong>
-          <p class="text-sm text-slate-500 m-0">Founder, Celestial Studios</p>
-          <p class="text-sm text-slate-600 mt-2 mb-0">Celestial Studios helps businesses grow through websites, branding, digital marketing, and AI-powered solutions. <em>Click. Connect. Grow.</em></p>
+        <section class="article-author" aria-label="About the author">
+          <div class="article-author-card">
+            <img src="../assets/images/saurabh-profile.png" alt="Saurabh Kumar" width="64" height="64" loading="lazy">
+            <div class="article-author-card__content">
+              <p class="article-author-card__label">Written by</p>
+              <h3 class="article-author-card__name">Saurabh Kumar</h3>
+              <p class="article-author-card__role">Founder, Celestial Studios</p>
+              <p class="article-author-card__bio">Celestial Studios helps businesses grow through websites, branding, digital marketing, and AI-powered solutions. <em>Click. Connect. Grow.</em></p>
+            </div>
+          </div>
+        </section>
+
+        <div class="article-share" aria-label="Share this article">
+          <span class="article-share__label">Share this article</span>
+          <div class="article-share__buttons">
+            <a class="article-share__btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fcelestialstudios.in%2Fblog%2Fdigital-marketing-strategies%2F" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+            <a class="article-share__btn" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fcelestialstudios.in%2Fblog%2Fdigital-marketing-strategies%2F&text=Digital%20Marketing%20Strategies%20That%20Actually%20Work" target="_blank" rel="noopener noreferrer" aria-label="Share on X">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a class="article-share__btn" href="mailto:?subject=Digital%20Marketing%20Strategies%20That%20Actually%20Work&body=https%3A%2F%2Fcelestialstudios.in%2Fblog%2Fdigital-marketing-strategies%2F" aria-label="Share via email">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </a>
+          </div>
         </div>
-      </div>
 
-      <div class="article-share">
-        <span class="text-sm text-slate-500 font-medium">Share:</span>
-        <a class="article-share__btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fcelestialstudios.in%2Fblog%2Fdigital-marketing-strategies%2F" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">
-          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-        </a>
-        <a class="article-share__btn" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fcelestialstudios.in%2Fblog%2Fdigital-marketing-strategies%2F&text=Digital%20Marketing%20Strategies%20That%20Actually%20Work" target="_blank" rel="noopener noreferrer" aria-label="Share on Twitter">
-          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-        </a>
-        <a class="article-share__btn" href="mailto:?subject=Digital%20Marketing%20Strategies%20That%20Actually%20Work&body=https%3A%2F%2Fcelestialstudios.in%2Fblog%2Fdigital-marketing-strategies%2F" aria-label="Share via email">
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-        </a>
-      </div>
-
-      <section class="article-related"><h2>Related Articles</h2><div class="article-related-grid"><a href="../blog/seo-for-small-businesses.html" class="article-related-card">
+        <section class="article-related"><h2>Related Articles</h2><div class="article-related-grid"><a href="../blog/seo-for-small-businesses.html" class="article-related-card">
       <img src="../assets/images/blog-seo-growth.jpg" alt="SEO analytics and search ranking growth chart" loading="lazy" width="400" height="200">
       <div class="article-related-card__body"><h3>SEO for Small Businesses: A Complete Beginner's Guide</h3></div>
     </a><a href="../blog/social-media-business-growth.html" class="article-related-card">
@@ -450,15 +462,41 @@
       <div class="article-related-card__body"><h3>How to Generate Leads Through Your Website</h3></div>
     </a></div></section>
 
-      <section class="article-cta">
-        <h2>Ready to Grow Your Brand?</h2>
-        <p>Partner with Celestial Studios to build a stronger online presence and accelerate your business growth.</p>
-        <div class="article-cta__buttons">
-          <a href="../contact.html" class="article-cta__btn-primary">Book a Free Consultation</a>
-          <a href="../services.html" class="article-cta__btn-secondary">Explore Our Services</a>
+        <section class="article-cta">
+          <div class="article-cta__glow" aria-hidden="true"></div>
+          <h2>Ready to Grow Your Business?</h2>
+          <p>Partner with Celestial Studios to build a stronger online presence through web development, branding, SEO, and digital growth strategies.</p>
+          <div class="article-cta__buttons">
+            <a href="../contact.html" class="article-cta__btn-primary">Book a Free Consultation</a>
+            <a href="../services.html" class="article-cta__btn-secondary">Explore Services</a>
+          </div>
+        </section>
+
+        <div class="article-sidebar-mobile">
+          <aside class="article-sidebar article-sidebar--inline" aria-label="Consultation call to action">
+    <div class="article-sidebar__cta">
+      <h3 class="article-sidebar__title">Ready to Grow Your Business?</h3>
+      <p class="article-sidebar__text">Partner with Celestial Studios to build a stronger online presence through web development, branding, SEO, and digital growth strategies.</p>
+      <div class="article-sidebar__buttons">
+        <a href="../contact.html" class="article-sidebar__btn-primary">Book a Free Consultation</a>
+        <a href="../services.html" class="article-sidebar__btn-secondary">Explore Services</a>
+      </div>
+    </div>
+  </aside>
         </div>
-      </section>
-    </article>
+      </article>
+
+      <aside class="article-sidebar" aria-label="Consultation call to action">
+    <div class="article-sidebar__cta">
+      <h3 class="article-sidebar__title">Ready to Grow Your Business?</h3>
+      <p class="article-sidebar__text">Partner with Celestial Studios to build a stronger online presence through web development, branding, SEO, and digital growth strategies.</p>
+      <div class="article-sidebar__buttons">
+        <a href="../contact.html" class="article-sidebar__btn-primary">Book a Free Consultation</a>
+        <a href="../services.html" class="article-sidebar__btn-secondary">Explore Services</a>
+      </div>
+    </div>
+  </aside>
+    </div>
   </div>
 
   <footer class="bg-black text-white">

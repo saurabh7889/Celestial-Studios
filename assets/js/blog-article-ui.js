@@ -3,15 +3,64 @@
 
   var progressBar = document.getElementById("reading-progress");
   var backToTop = document.getElementById("back-to-top");
-  var tocLinks = document.querySelectorAll(".article-toc__list a");
+  var tocToggle = document.querySelector(".article-toc__toggle");
+  var tocPanel = document.getElementById("article-toc-panel");
+  var tocLinks = document.querySelectorAll("[data-toc-link]");
   var headings = [];
 
   tocLinks.forEach(function (link) {
-    var id = link.getAttribute("href");
-    if (id && id.charAt(0) === "#") {
-      var el = document.getElementById(id.slice(1));
+    var href = link.getAttribute("href");
+    if (href && href.charAt(0) === "#") {
+      var el = document.getElementById(href.slice(1));
       if (el) headings.push({ el: el, link: link });
     }
+  });
+
+  if (tocToggle && tocPanel) {
+    var isDesktop = function () {
+      return window.matchMedia("(min-width: 1024px)").matches;
+    };
+
+    tocToggle.addEventListener("click", function () {
+      var expanded = tocToggle.getAttribute("aria-expanded") === "true";
+      tocToggle.setAttribute("aria-expanded", expanded ? "false" : "true");
+      tocPanel.classList.toggle("is-open", !expanded);
+    });
+
+    if (isDesktop()) {
+      tocPanel.classList.add("is-open");
+      tocToggle.setAttribute("aria-expanded", "true");
+    }
+
+    window.matchMedia("(min-width: 1024px)").addEventListener("change", function (e) {
+      if (e.matches) {
+        tocPanel.classList.add("is-open");
+        tocToggle.setAttribute("aria-expanded", "true");
+      } else {
+        tocPanel.classList.remove("is-open");
+        tocToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+
+  tocLinks.forEach(function (link) {
+    link.addEventListener("click", function (e) {
+      var href = link.getAttribute("href");
+      if (!href || href.charAt(0) !== "#") return;
+
+      var target = document.getElementById(href.slice(1));
+      if (!target) return;
+
+      e.preventDefault();
+      var offset = 112;
+      var top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: top, behavior: "smooth" });
+
+      if (tocPanel && !window.matchMedia("(min-width: 1024px)").matches) {
+        tocPanel.classList.remove("is-open");
+        if (tocToggle) tocToggle.setAttribute("aria-expanded", "false");
+      }
+    });
   });
 
   function onScroll() {
@@ -33,7 +82,7 @@
 
     var current = null;
     headings.forEach(function (item) {
-      if (item.el.getBoundingClientRect().top <= 120) {
+      if (item.el.getBoundingClientRect().top <= 140) {
         current = item;
       }
     });

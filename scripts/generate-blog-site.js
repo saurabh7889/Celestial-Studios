@@ -224,16 +224,18 @@ function adjustPaths(html, prefix) {
 
 function extractToc(bodyHtml) {
   const toc = [];
-  const h2Regex = /<h2\s+id="([^"]+)"[^>]*>([^<]+)</g;
+  const headingRegex = /<h([23])\s+id="([^"]+)"[^>]*>([^<]+)</g;
   let match;
-  while ((match = h2Regex.exec(bodyHtml)) !== null) {
-    toc.push({ id: match[1], text: match[2].trim(), children: [] });
-  }
-  const h3Regex = /<h3\s+id="([^"]+)"[^>]*>([^<]+)</g;
-  while ((match = h3Regex.exec(bodyHtml)) !== null) {
-    const lastH2 = toc[toc.length - 1];
-    if (lastH2) {
-      lastH2.children.push({ id: match[1], text: match[2].trim() });
+  let currentH2 = null;
+  while ((match = headingRegex.exec(bodyHtml)) !== null) {
+    const level = match[1];
+    const id = match[2];
+    const text = match[3].trim();
+    if (level === '2') {
+      currentH2 = { id, text, children: [] };
+      toc.push(currentH2);
+    } else if (level === '3' && currentH2) {
+      currentH2.children.push({ id, text });
     }
   }
   return toc;
@@ -241,13 +243,16 @@ function extractToc(bodyHtml) {
 
 function buildTocHtml(toc, articlePrefix) {
   if (!toc.length) return '';
-  let html = '<nav class="article-toc__inner" aria-label="Table of contents"><p class="article-toc__title">On this page</p><ul class="article-toc__list">';
-  toc.forEach((item) => {
-    html += `<li><a href="${articlePrefix}#${item.id}">${item.text}</a>`;
+  let html = '<nav class="article-toc__inner" aria-label="Table of contents">';
+  html += '<p class="article-toc__title">Table of Contents</p>';
+  html += '<ul class="article-toc__list">';
+  toc.forEach((item, index) => {
+    const num = String(index + 1).padStart(2, '0');
+    html += `<li class="article-toc__item"><a href="${articlePrefix}#${item.id}" class="article-toc__link" data-toc-link><span class="article-toc__num" aria-hidden="true">${num}</span><span class="article-toc__text">${item.text}</span></a>`;
     if (item.children.length) {
-      html += '<ul class="article-toc__list">';
+      html += '<ul class="article-toc__sublist">';
       item.children.forEach((child) => {
-        html += `<li class="toc-h3"><a href="${articlePrefix}#${child.id}">${child.text}</a></li>`;
+        html += `<li class="article-toc__subitem"><a href="${articlePrefix}#${child.id}" class="article-toc__link article-toc__link--sub" data-toc-link><span class="article-toc__text">${child.text}</span></a></li>`;
       });
       html += '</ul>';
     }
@@ -255,6 +260,20 @@ function buildTocHtml(toc, articlePrefix) {
   });
   html += '</ul></nav>';
   return html;
+}
+
+function buildSidebarCta(pathPrefix, variant = 'sidebar') {
+  const extraClass = variant === 'inline' ? ' article-sidebar--inline' : '';
+  return `<aside class="article-sidebar${extraClass}" aria-label="Consultation call to action">
+    <div class="article-sidebar__cta">
+      <h3 class="article-sidebar__title">Ready to Grow Your Business?</h3>
+      <p class="article-sidebar__text">Partner with Celestial Studios to build a stronger online presence through web development, branding, SEO, and digital growth strategies.</p>
+      <div class="article-sidebar__buttons">
+        <a href="${pathPrefix}contact.html" class="article-sidebar__btn-primary">Book a Free Consultation</a>
+        <a href="${pathPrefix}services.html" class="article-sidebar__btn-secondary">Explore Services</a>
+      </div>
+    </div>
+  </aside>`;
 }
 
 function buildRelatedHtml(post, allPosts, pathPrefix) {
@@ -349,68 +368,88 @@ function buildArticlePage(post, allPosts, pathPrefix, isRoot) {
   ${navbar}
   <script type="module">document.addEventListener("scroll", () => { const e = document.getElementById("main-header"); window.scrollY > 0 ? e?.classList.add("shadow-header") : e?.classList.remove("shadow-header"); });</script>
 
-  <section class="article-hero text-white pt-28 pb-16 px-4 sm:px-6 lg:px-8">
-    <div class="article-hero__orb" aria-hidden="true"></div>
-    <div class="max-w-4xl mx-auto relative z-10">
-      <p class="article-breadcrumb"><a href="${pathPrefix}index.html">Home</a> / <a href="${pathPrefix}blog.html">Blog</a> / <span>${post.category}</span></p>
-      <span class="blog-card__category" style="color:#60a5fa;background:rgba(59,130,246,0.15);border-color:rgba(96,165,250,0.3);">${post.category}</span>
-      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mt-4 mb-6">${post.title}</h1>
-      <div class="flex flex-wrap items-center gap-4 text-sm text-white/70">
-        <span>${post.author}</span>
-        <span>·</span>
-        <time datetime="${post.date}">${post.dateDisplay}</time>
-        <span>·</span>
-        <span>${post.readTime}</span>
-      </div>
+  <div class="article-page">
+    <div class="article-layout">
+      <aside class="article-toc" aria-label="Article navigation">
+        <button type="button" class="article-toc__toggle" aria-expanded="false" aria-controls="article-toc-panel">
+          <span class="article-toc__toggle-label">Table of Contents</span>
+          <svg class="article-toc__toggle-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div id="article-toc-panel" class="article-toc__panel">${tocHtml}</div>
+      </aside>
+
+      <article class="article-content">
+        <header class="article-header">
+          <nav class="article-breadcrumb" aria-label="Breadcrumb">
+            <a href="${pathPrefix}index.html">Home</a>
+            <span class="article-breadcrumb__sep" aria-hidden="true">/</span>
+            <a href="${pathPrefix}blog.html">Blog</a>
+            <span class="article-breadcrumb__sep" aria-hidden="true">/</span>
+            <span class="article-breadcrumb__current">${post.title}</span>
+          </nav>
+          <span class="article-category">${post.category}</span>
+          <h1 class="article-title">${post.title}</h1>
+          <p class="article-meta">
+            By <span class="article-meta__author">${post.author}</span>
+            <span class="article-meta__sep" aria-hidden="true">·</span>
+            <time datetime="${post.date}">${post.dateDisplay}</time>
+            <span class="article-meta__sep" aria-hidden="true">·</span>
+            <span>${post.readTime}</span>
+          </p>
+        </header>
+
+        <div class="article-featured-image celestial-image-wrap">
+          <img src="${pathPrefix}${post.image}" alt="${post.imageAlt}" class="celestial-brand-img w-full h-auto object-cover" width="1200" height="630" loading="eager">
+        </div>
+
+        <div class="article-body">${bodyHtml}</div>
+
+        <section class="article-author" aria-label="About the author">
+          <div class="article-author-card">
+            <img src="${pathPrefix}${post.authorImage}" alt="${post.author}" width="64" height="64" loading="lazy">
+            <div class="article-author-card__content">
+              <p class="article-author-card__label">Written by</p>
+              <h3 class="article-author-card__name">${post.author}</h3>
+              <p class="article-author-card__role">${post.authorRole}</p>
+              <p class="article-author-card__bio">Celestial Studios helps businesses grow through websites, branding, digital marketing, and AI-powered solutions. <em>Click. Connect. Grow.</em></p>
+            </div>
+          </div>
+        </section>
+
+        <div class="article-share" aria-label="Share this article">
+          <span class="article-share__label">Share this article</span>
+          <div class="article-share__buttons">
+            <a class="article-share__btn" href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(canonical)}" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+            <a class="article-share__btn" href="https://twitter.com/intent/tweet?url=${encodeURIComponent(canonical)}&text=${encodeURIComponent(post.title)}" target="_blank" rel="noopener noreferrer" aria-label="Share on X">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a class="article-share__btn" href="mailto:?subject=${encodeURIComponent(post.title)}&body=${encodeURIComponent(canonical)}" aria-label="Share via email">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        ${relatedHtml}
+
+        <section class="article-cta">
+          <div class="article-cta__glow" aria-hidden="true"></div>
+          <h2>Ready to Grow Your Business?</h2>
+          <p>Partner with Celestial Studios to build a stronger online presence through web development, branding, SEO, and digital growth strategies.</p>
+          <div class="article-cta__buttons">
+            <a href="${pathPrefix}contact.html" class="article-cta__btn-primary">Book a Free Consultation</a>
+            <a href="${pathPrefix}services.html" class="article-cta__btn-secondary">Explore Services</a>
+          </div>
+        </section>
+
+        <div class="article-sidebar-mobile">
+          ${buildSidebarCta(pathPrefix, 'inline')}
+        </div>
+      </article>
+
+      ${buildSidebarCta(pathPrefix)}
     </div>
-  </section>
-
-  <div class="article-layout">
-    <aside class="article-toc lg:block">${tocHtml}</aside>
-    <article class="article-content">
-      <div class="article-featured-image celestial-image-wrap">
-        <img src="${pathPrefix}${post.image}" alt="${post.imageAlt}" class="celestial-brand-img w-full h-auto object-cover" width="1200" height="630" loading="eager">
-      </div>
-      <div class="article-meta-bar">
-        <span><strong>${post.author}</strong> · ${post.authorRole}</span>
-        <span>${post.dateDisplay}</span>
-        <span>${post.readTime}</span>
-      </div>
-      <div class="article-body">${bodyHtml}</div>
-
-      <div class="article-author-card">
-        <img src="${pathPrefix}${post.authorImage}" alt="${post.author}" width="56" height="56" loading="lazy">
-        <div>
-          <strong class="text-slate-900">${post.author}</strong>
-          <p class="text-sm text-slate-500 m-0">${post.authorRole}</p>
-          <p class="text-sm text-slate-600 mt-2 mb-0">Celestial Studios helps businesses grow through websites, branding, digital marketing, and AI-powered solutions. <em>Click. Connect. Grow.</em></p>
-        </div>
-      </div>
-
-      <div class="article-share">
-        <span class="text-sm text-slate-500 font-medium">Share:</span>
-        <a class="article-share__btn" href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(canonical)}" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">
-          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-        </a>
-        <a class="article-share__btn" href="https://twitter.com/intent/tweet?url=${encodeURIComponent(canonical)}&text=${encodeURIComponent(post.title)}" target="_blank" rel="noopener noreferrer" aria-label="Share on Twitter">
-          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-        </a>
-        <a class="article-share__btn" href="mailto:?subject=${encodeURIComponent(post.title)}&body=${encodeURIComponent(canonical)}" aria-label="Share via email">
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-        </a>
-      </div>
-
-      ${relatedHtml}
-
-      <section class="article-cta">
-        <h2>Ready to Grow Your Brand?</h2>
-        <p>Partner with Celestial Studios to build a stronger online presence and accelerate your business growth.</p>
-        <div class="article-cta__buttons">
-          <a href="${pathPrefix}contact.html" class="article-cta__btn-primary">Book a Free Consultation</a>
-          <a href="${pathPrefix}services.html" class="article-cta__btn-secondary">Explore Our Services</a>
-        </div>
-      </section>
-    </article>
   </div>
 
   ${footer}
