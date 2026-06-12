@@ -6,41 +6,76 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(59, 130, 246, 0.15) 15%,
-    rgba(96, 165, 250, 0.65) 50%,
-    rgba(59, 130, 246, 0.15) 85%,
+    rgba(59, 130, 246, 0.12) 12%,
+    rgba(96, 165, 250, 0.55) 50%,
+    rgba(59, 130, 246, 0.12) 88%,
     transparent 100%
   );
-  box-shadow: 0 0 24px rgba(59, 130, 246, 0.35), 0 0 48px rgba(96, 165, 250, 0.12);
+  box-shadow:
+    0 0 20px rgba(59, 130, 246, 0.3),
+    0 0 40px rgba(96, 165, 250, 0.1),
+    0 1px 0 rgba(16, 36, 71, 0.6);
 }
 
 .team-partner-section {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(165deg, #071226 0%, #0b1733 55%, #071226 100%);
+  background: linear-gradient(165deg, #071226 0%, #102447 48%, #071226 100%);
 }
 
-.team-partner-section__orb {
+.team-partner-section::before {
+  content: "";
   position: absolute;
-  top: 20%;
-  right: -8%;
-  width: min(520px, 70vw);
-  height: min(520px, 70vw);
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(900px, 120vw);
+  height: min(700px, 90vw);
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.18) 0%, rgba(96, 165, 250, 0.06) 45%, transparent 70%);
-  filter: blur(60px);
+  background: radial-gradient(
+    circle,
+    rgba(59, 130, 246, 0.1) 0%,
+    rgba(96, 165, 250, 0.04) 40%,
+    transparent 68%
+  );
+  filter: blur(48px);
   pointer-events: none;
   z-index: 0;
 }
 
+.team-partner-section__orb {
+  position: absolute;
+  top: 18%;
+  right: -6%;
+  width: min(520px, 70vw);
+  height: min(520px, 70vw);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(59, 130, 246, 0.22) 0%,
+    rgba(96, 165, 250, 0.08) 45%,
+    transparent 70%
+  );
+  filter: blur(64px);
+  pointer-events: none;
+  z-index: 0;
+  box-shadow: 0 0 120px rgba(59, 130, 246, 0.12);
+}
+
 .team-partner-section__orb--secondary {
   top: auto;
-  bottom: 5%;
+  bottom: 8%;
   right: auto;
-  left: -10%;
-  width: min(400px, 55vw);
-  height: min(400px, 55vw);
-  background: radial-gradient(circle, rgba(96, 165, 250, 0.12) 0%, transparent 65%);
+  left: -8%;
+  width: min(420px, 55vw);
+  height: min(420px, 55vw);
+  background: radial-gradient(
+    circle,
+    rgba(96, 165, 250, 0.14) 0%,
+    rgba(59, 130, 246, 0.05) 50%,
+    transparent 65%
+  );
+  box-shadow: 0 0 80px rgba(96, 165, 250, 0.08);
 }
 
 .team-partner-section__inner {
