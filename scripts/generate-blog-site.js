@@ -219,6 +219,12 @@ function adjustPaths(html, prefix) {
     .replace(/href="contact\.html/g, `href="${prefix}contact.html`)
     .replace(/href="blog\.html/g, `href="${prefix}blog.html`)
     .replace(/href="industries\.html/g, `href="${prefix}industries.html`)
+    .replace(/href="privacy-policy\.html/g, `href="${prefix}privacy-policy.html`)
+    .replace(/href="terms-and-conditions\.html/g, `href="${prefix}terms-and-conditions.html`)
+    .replace(/href="cookie-policy\.html/g, `href="${prefix}cookie-policy.html`)
+    .replace(/href="disclaimer\.html/g, `href="${prefix}disclaimer.html`)
+    .replace(/href="refund-policy\.html/g, `href="${prefix}refund-policy.html`)
+    .replace(/href="contact-information\.html/g, `href="${prefix}contact-information.html`)
     .replace(/href="blog\//g, `href="${prefix}blog/`);
 }
 
@@ -362,6 +368,7 @@ function buildArticlePage(post, allPosts, pathPrefix, isRoot) {
   <link rel="stylesheet" href="${pathPrefix}assets/css/contact.css">
   <link rel="stylesheet" href="${pathPrefix}assets/css/brand-images.css">
   <link rel="stylesheet" href="${pathPrefix}assets/css/blog-article.css">
+  <link rel="stylesheet" href="${pathPrefix}assets/css/footer.css">
 </head>
 <body class="font-sans">
   <div id="reading-progress" class="reading-progress" aria-hidden="true"></div>
@@ -457,7 +464,6 @@ function buildArticlePage(post, allPosts, pathPrefix, isRoot) {
     <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/></svg>
   </button>
   <script src="${pathPrefix}assets/js/blog-article-ui.js" defer></script>
-  <script src="${pathPrefix}assets/js/chat.js" defer></script>
 </body>
 </html>`;
 }
@@ -516,6 +522,7 @@ function buildBlogListing() {
   <link rel="stylesheet" href="assets/css/contact.css">
   <link rel="stylesheet" href="assets/css/brand-images.css">
   <link rel="stylesheet" href="assets/css/blog.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
 </head>
 <body class="font-sans">
   ${navbar}
@@ -560,7 +567,6 @@ function buildBlogListing() {
   </section>
 
   ${footer}
-  <script src="assets/js/chat.js" defer></script>
 </body>
 </html>`;
 }
